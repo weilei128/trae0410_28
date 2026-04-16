@@ -7,7 +7,7 @@
           <div class="header-actions">
             <el-input
               v-model="searchKeyword"
-              placeholder="搜索图书名称/作�?ISBN"
+              placeholder="搜索图书名称/作�?ISBN"
               style="width: 250px; margin-right: 10px"
               @keyup.enter="handleSearch"
               clearable
@@ -21,11 +21,11 @@
       <el-table :data="books" v-loading="loading" stripe>
         <el-table-column prop="id" label="ID" width="80" />
         <el-table-column prop="name" label="书名" min-width="150" />
-        <el-table-column prop="author" label="作�? width="120" />
+        <el-table-column prop="author" label="作�? width="120" />
         <el-table-column prop="isbn" label="ISBN" width="140" />
         <el-table-column prop="category" label="分类" width="100" />
-        <el-table-column prop="totalStock" label="总库�? width="80" align="center" />
-        <el-table-column prop="availableStock" label="可�? width="80" align="center">
+        <el-table-column prop="totalStock" label="总库�? width="80" align="center" />
+        <el-table-column prop="availableStock" label="可�? width="80" align="center">
           <template #default="{ row }">
             <el-tag :type="row.availableStock > 0 ? 'success' : 'danger'">
               {{ row.availableStock }}
@@ -44,18 +44,18 @@
     <el-dialog v-model="dialogVisible" :title="isEdit ? '编辑图书' : '添加图书'" width="500px">
       <el-form :model="form" :rules="rules" ref="formRef" label-width="80px">
         <el-form-item label="书名" prop="name">
-          <el-input v-model="form.name" placeholder="请输入书�? />
+          <el-input v-model="form.name" placeholder="请输入书�? />
         </el-form-item>
-        <el-form-item label="作�? prop="author">
-          <el-input v-model="form.author" placeholder="请输入作�? />
+        <el-form-item label="作�? prop="author">
+          <el-input v-model="form.author" placeholder="请输入作�? />
         </el-form-item>
         <el-form-item label="ISBN" prop="isbn">
           <el-input v-model="form.isbn" placeholder="请输入ISBN" />
         </el-form-item>
         <el-form-item label="分类" prop="category">
-          <el-input v-model="form.category" placeholder="请输入分�? />
+          <el-input v-model="form.category" placeholder="请输入分�? />
         </el-form-item>
-        <el-form-item label="总库�? prop="totalStock">
+        <el-form-item label="总库�? prop="totalStock">
           <el-input-number v-model="form.totalStock" :min="0" :max="9999" />
         </el-form-item>
       </el-form>
@@ -94,8 +94,8 @@ export default {
     })
     
     const rules = {
-      name: [{ required: true, message: '请输入书�?, trigger: 'blur' }],
-      totalStock: [{ required: true, message: '��������', trigger: 'blur', validator: (rule, value, callback) => { if (value < 10) { callback(new Error('��治������ 10')); } else { callback(); } } }]
+      name: [{ required: true, message: '请输入书名', trigger: 'blur' }],
+      totalStock: [{ required: true, message: '请输入库存', trigger: 'blur' }]
     }
     
     const loadBooks = async () => {
@@ -179,7 +179,7 @@ export default {
     
     const handleDelete = async (row) => {
       try {
-        await ElMessageBox.confirm('确定要删除这本图书吗�?, '提示', {
+        await ElMessageBox.confirm('确定要删除这本图书吗�?, '提示', {
           type: 'warning'
         })
         
